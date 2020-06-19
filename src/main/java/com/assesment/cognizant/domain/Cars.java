@@ -6,6 +6,11 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 
+/**
+ * Model class for holding car related details
+ * @author Vinita
+ *
+ */
 @Document("cars")
 public class Cars {
 	
@@ -19,12 +24,9 @@ public class Cars {
 	private Date date_added;
 	private String warehouseName;
 	private String warehouseLocation;
-	private String url;
-	
-	
 	
 	public Cars(int id, String carMake, String carModel, int carYearModel, double carPrice, boolean carLicensed,
-			Date date_added, String warehouseName, String warehouseLocation, String url) {
+			Date date_added, String warehouseName, String warehouseLocation) {
 		super();
 		this.id = id;
 		this.carMake = carMake;
@@ -35,7 +37,7 @@ public class Cars {
 		this.date_added = date_added;
 		this.warehouseName = warehouseName;
 		this.warehouseLocation = warehouseLocation;
-		this.url = url;
+		
 	}
 	public int getId() {
 		return id;
@@ -91,12 +93,7 @@ public class Cars {
 	public void setWarehouseLocation(String warehouseLocation) {
 		this.warehouseLocation = warehouseLocation;
 	}
-	public String getUrl() {
-		return url;
-	}
-	public void setUrl(String url) {
-		this.url = url;
-	}
+	
 	
 
 	

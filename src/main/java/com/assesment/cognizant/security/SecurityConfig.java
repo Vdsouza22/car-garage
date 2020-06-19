@@ -1,12 +1,19 @@
 package com.assesment.cognizant.security;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
  
+/**
+ * Class to enable authentication and set username , password
+ * Only for development purpose ( not recommended )
+ * @author Vinita
+ *
+ */
+@EnableWebSecurity
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter
 {
@@ -15,18 +22,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
     {
         http
          .csrf().disable()
-         .authorizeRequests().anyRequest().authenticated()
+         .authorizeRequests().antMatchers("/api/cars").permitAll().antMatchers("/api/cars/**").permitAll().anyRequest().authenticated()
          .and()
          .httpBasic();
     }
   
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) 
-            throws Exception 
-    {
-        auth.inMemoryAuthentication()
-            .withUser("admin")
-            .password("{noop}password")
-            .roles("USER");
-    }
+ 
 }

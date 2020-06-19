@@ -3,7 +3,8 @@ package com.assesment.cognizant.domain;
 import org.springframework.http.HttpStatus;
 
 /*
- * A sample class for adding error information in the response
+ * This class populates additional detaisl in the error response.
+ * @author Vinita
  */
 
 public class RestErrorInfo {

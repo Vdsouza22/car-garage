@@ -2,21 +2,19 @@ package com.assesment.cognizant.service;
 
 
 import java.util.List;
-import java.util.Optional;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
-
 import com.assesment.cognizant.dao.jpa.GarageRepository;
 import com.assesment.cognizant.domain.Cars;
 
-/*
- * Sample service to demonstrate what the API would use to get things done
+
+/**
+ * Service class to fetch the necessary information 
+ * from MongoDB for each defined API request
+ * @author Vinita
+ *
  */
 @Service
 public class CarService {
@@ -29,13 +27,23 @@ public class CarService {
     public CarService() {
     }
 
-
+    /**
+     * Method to fetch the car by id
+     * @param id
+     * @return cars
+     */
     public Cars getCar(int id) {
+    	log.info("Request to fetch all the cars");
         return garageRepository.findById(id);
     }
-
-
+    
+    /**
+     * Method to fetch all the cars
+     * @param id
+     * @return cars
+     */
     public List<Cars> getAllCars() {
+    	log.info("Request to fetch a specific car");
         List<Cars> pageOfCars = garageRepository.findAll(); 
         return pageOfCars;
     }

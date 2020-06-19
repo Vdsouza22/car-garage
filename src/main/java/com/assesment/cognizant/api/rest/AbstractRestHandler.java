@@ -1,6 +1,5 @@
 package com.assesment.cognizant.api.rest;
 
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -13,16 +12,21 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import com.assesment.cognizant.domain.RestErrorInfo;
 import com.assesment.cognizant.exception.ResourceNotFoundException;
 
-
 /**
- * It contains exception mapping and other common REST API functionality
+ * This class is used for global handling of the exceptions in HTTP request
+ * @author Vinita
  */
 @ControllerAdvice
 public class AbstractRestHandler extends ResponseEntityExceptionHandler  {
 
     protected final Logger log = LoggerFactory.getLogger(this.getClass());
 
-
+    /**
+     * Handler for the exception related to resource not found
+     * @param ex
+     * @param request
+     * @return ResponseEntity<RestErrorInfo>
+     */
     @ExceptionHandler(ResourceNotFoundException.class)
     public
     final ResponseEntity<RestErrorInfo> handleResourceNotFoundException(ResourceNotFoundException ex, WebRequest request) {

@@ -3,8 +3,11 @@ package com.assesment.cognizant.exception;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+
 /**
- * For HTTP 404 errros
+ * Custom Exception class
+ * @author Vinita
+ *
  */
 @ResponseStatus(HttpStatus.NOT_FOUND)
 public class ResourceNotFoundException extends RuntimeException {
