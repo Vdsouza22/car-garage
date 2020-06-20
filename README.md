@@ -1,15 +1,17 @@
-# car-garage
+## car-garage
 This is a Spring Boot Web application used to fetch car details for a website selling seconf hand cars
 
 How to Run
-This application is packaged as a war which has Tomcat 8 and MongoDB embedded.  You run it using the java -jar command.
+This application is packaged as a war which has Tomcat 8 and MongoDB embedded.  You run it using the ```java -jar``` command.
 
-Steps needed:
-1)Clone this repository
-2)Confirm using JDK 1.8 and Maven 3.x
-3)You can build the project by running mvn clean package
-4) Once successfully built, you can run the service by one of these two methods:
+# Steps needed:
+* Clone this repository
+* Confirm using JDK 1.8 and Maven 3.x
+* You can build the project by running mvn clean package
+* Once successfully built, you can run the service by one of these two methods:
+```
         mvn spring-boot:run -Drun.arguments="spring.profiles.active=test"
+```
 
 
 The REST API details are mentioned in the below url . The port used is 8091. 
