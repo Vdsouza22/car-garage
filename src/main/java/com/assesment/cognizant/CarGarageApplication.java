@@ -1,5 +1,6 @@
 package com.assesment.cognizant;
 
+import java.util.Collections;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -11,6 +12,12 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
+import org.springframework.context.annotation.Bean;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.core.Ordered;
 
 /*
  * This is the main Spring Boot application class to configure Spring Boot and Mongo Repository
@@ -36,5 +43,18 @@ public class CarGarageApplication extends SpringBootServletInitializer{
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(applicationClass);
     }
-    
+	@Bean
+    public FilterRegistrationBean<CorsFilter> simpleCorsFilter() {  
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();  
+        CorsConfiguration config = new CorsConfiguration();  
+        config.setAllowCredentials(true); 
+        // *** URL below needs to match the Vue client URL and port ***
+        config.setAllowedOrigins(Collections.singletonList("http://localhost:8081")); 
+        config.setAllowedMethods(Collections.singletonList("*"));  
+        config.setAllowedHeaders(Collections.singletonList("*"));  
+        source.registerCorsConfiguration("/**", config);  
+        FilterRegistrationBean<CorsFilter> bean = new FilterRegistrationBean<>(new CorsFilter(source));
+        bean.setOrder(Ordered.HIGHEST_PRECEDENCE);  
+        return bean;  
+    }   
 }

@@ -29,7 +29,7 @@ import com.assesment.cognizant.service.CarService;
  * This class is the entry point for th apis
  * @author Vinita
  */
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+
 @RestController
 @RequestMapping(value = "/api/v1/cars")
 @Api(tags = { "cars" })
