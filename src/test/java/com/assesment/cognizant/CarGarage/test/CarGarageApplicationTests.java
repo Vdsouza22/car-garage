@@ -1,4 +1,4 @@
-package com.assesment.cognizent.CarGarage.test;
+package com.assesment.cognizant.CarGarage.test;
 
 
 
